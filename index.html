@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>sclc download speed</title>
+</head>
+<body>
+  <div>
+    <input type="number" value="2.04" oninput="func(this.value)" id="g">G(总共)
+  </div>
+  <div>
+    <input type="number" value="368.53" oninput="func(this.value)" id="m">M(已下)
+  </div>
+  <div>
+    <input type="number" value="55" oninput="func(this.value)" id="kb">kb/s(速度)
+  </div>
+  <div>
+    还剩大约 <span id="h"></span> 小时
+  </div>
+  <script>
+    const a = document.getElementById('g');
+    const b = document.getElementById('m');
+    const c = document.getElementById('kb');
+
+    const d = document.getElementById('h');
+
+    let obj = {
+      i: a.value,
+      j: b.value,
+      k: c.value,
+    }
+    d.innerHTML = sclc(obj.i,obj.j,obj.k);
+    
+    function func(e){
+      let obj = {
+        i: a.value,
+        j: b.value,
+        k: c.value,
+      }
+      d.innerHTML = sclc(obj.i,obj.j,obj.k);
+    }
+
+    function sclc(x,y,z){
+      return (( ( ( ( x * 1024 ) * 1024 ) - ( y * 1024 ) ) / z ) / ( 60 * 60 )).toFixed(2);
+    }
+  </script>
+</body>
+</html> 
